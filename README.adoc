@@ -1,0 +1,38 @@
+wtype-rs
+--------
+
+Simulate keyboard input
+
+About
+~~~~~
+
+For some reason I could not get modifiers to work with `wtype` (https://github.com/atx/wtype[^]) correctly. So I slapped a few example files together and built `wtype-rs` on top of the `enigo` (https://github.com/enigo-rs/enigo[^]) library.
+
+`wtype-rs` works a bit differently compared to the original `wtype`.
+
+`wtype-rs` will type any unicode charsfootnote:[https://doc.rust-lang.org/std/primitive.char.html] file, argument or stdin verbatim / as presented. E.g.: typing capital 'A'
+
+[source,shell]
+--------------
+$ wtype -M capslock a -m capslock
+A
+--------------
+
+would be 
+
+[source,shell]
+--------------
+$ wtype-rs A
+A
+--------------
+
+This should work with any valid unciode and control characters.
+
+[source,shell]
+--------------
+$ cat heart.txt
+❤️
+
+$ wtype-rs --file heart.txt
+❤️
+--------------

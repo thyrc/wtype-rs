@@ -1,0 +1,17 @@
+[package]
+name = "wtype-rs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75.0"
+
+[dependencies]
+enigo = { version = "0.2.1", default-features = false, features = ["wayland"] }
+lexopt = "0.3.0"
+
+[profile.release]
+opt-level = "z"
+panic = "abort"
+codegen-units = 1
+lto = true
+debug = false
+strip = true
